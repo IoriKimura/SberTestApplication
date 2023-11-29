@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteCategoryRequest {
+public class UpdatePriceRequest {
 
-    private String categoryName;
+    private String productName;
+
+    private int price;
+
 }

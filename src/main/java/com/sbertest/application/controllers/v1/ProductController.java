@@ -3,6 +3,7 @@ package com.sbertest.application.controllers.v1;
 import com.sbertest.application.dto.models.ProductModel;
 import com.sbertest.application.dto.requests.CreateProductRequest;
 import com.sbertest.application.dto.requests.DeleteProductRequest;
+import com.sbertest.application.dto.requests.UpdatePriceRequest;
 import com.sbertest.application.dto.responses.CreateProductResponse;
 import com.sbertest.application.dto.responses.DeleteProductResponse;
 import com.sbertest.application.service.product.ProductService;
@@ -34,5 +35,10 @@ public class ProductController {
         return DeleteProductResponse.builder()
                 .message(productService.deleteProduct(deleteRequest))
                 .build();
+    }
+
+    @PostMapping("/update")
+    public ProductModel updateProduct(@RequestBody UpdatePriceRequest updateRequest){
+        return productService.updateProduct(updateRequest);
     }
 }
