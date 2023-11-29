@@ -7,6 +7,8 @@ import jakarta.persistence.criteria.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class CategoryDao {
@@ -16,7 +18,6 @@ public class CategoryDao {
     public CategoryModel createCategory(CategoryEntity categoryEntity){
         CategoryEntity category = categoryRepo.save(categoryEntity);
         return CategoryModel.builder()
-                .categoryId(category.getId())
                 .categoryName(category.getCategoryName())
                 .build();
     }
@@ -26,5 +27,9 @@ public class CategoryDao {
             return categoryRepo.findByCategoryName(categoryName).get();
         }
         return null;
+    }
+
+    public List<CategoryModel> getAllCategories() {
+        return categoryRepo.findAll().stream().map(CategoryModel::fromEntity).toList();
     }
 }

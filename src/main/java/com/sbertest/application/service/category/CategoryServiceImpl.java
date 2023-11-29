@@ -7,6 +7,8 @@ import com.sbertest.application.entities.CategoryEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
@@ -19,5 +21,10 @@ public class CategoryServiceImpl implements CategoryService {
                 .build();
 
         return categoryDao.createCategory(category);
+    }
+
+    @Override
+    public List<CategoryModel> getCategories() {
+        return categoryDao.getAllCategories();
     }
 }

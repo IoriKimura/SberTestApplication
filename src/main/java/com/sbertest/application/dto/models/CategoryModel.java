@@ -13,13 +13,11 @@ import java.util.UUID;
 @Builder
 public class CategoryModel {
 
-    private UUID categoryId;
 
     private String categoryName;
 
     public static CategoryModel fromEntity(CategoryEntity category){
         return CategoryModel.builder()
-                .categoryId(category.getId())
                 .categoryName(category.getCategoryName())
                 .build();
     }
