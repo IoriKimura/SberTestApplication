@@ -4,12 +4,14 @@ import com.sbertest.application.dao.CategoryDao;
 import com.sbertest.application.dao.ProductDao;
 import com.sbertest.application.dto.models.ProductModel;
 import com.sbertest.application.dto.requests.CreateProductRequest;
+import com.sbertest.application.dto.requests.DeleteProductRequest;
 import com.sbertest.application.entities.CategoryEntity;
 import com.sbertest.application.entities.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Slf4j
@@ -37,5 +39,20 @@ public class ProductServiceImpl implements ProductService{
                 .build();
 
         return productDao.createProduct(product);
+    }
+
+    @Override
+    public List<ProductModel> getProducts() {
+        return productDao.getAllProducts();
+    }
+
+    @Override
+    public String deleteProduct(DeleteProductRequest request) {
+        if(productDao.findProductByName(request.getProductName()) == null){
+            log.info("No such a product");
+            return "Can't find the product";
+        }
+        productDao.deleteProduct(productDao.findProductByName(request.getProductName()));
+        return "Successfully deleted";
     }
 }
