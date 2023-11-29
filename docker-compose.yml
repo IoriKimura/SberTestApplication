@@ -1,0 +1,19 @@
+# Для запуска запустите терминал в корне проекта и введите следующую команду
+# "docker-compose up -d"
+version: "3.9"
+services:
+  postgresDB:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "testDB"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "postgresDB-data:/var/lib/postgresql/data"
+    #   Первый порт локальный, второй внутри докера
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgresDB-data:/var/lib/postgresql/data
+
+volumes:
+  postgresDB-data:
