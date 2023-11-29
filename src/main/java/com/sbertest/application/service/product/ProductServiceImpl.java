@@ -5,6 +5,7 @@ import com.sbertest.application.dao.ProductDao;
 import com.sbertest.application.dto.models.ProductModel;
 import com.sbertest.application.dto.requests.CreateProductRequest;
 import com.sbertest.application.dto.requests.DeleteProductRequest;
+import com.sbertest.application.dto.requests.UpdatePriceRequest;
 import com.sbertest.application.entities.CategoryEntity;
 import com.sbertest.application.entities.ProductEntity;
 import lombok.RequiredArgsConstructor;
@@ -54,5 +55,18 @@ public class ProductServiceImpl implements ProductService{
         }
         productDao.deleteProduct(productDao.findProductByName(request.getProductName()));
         return "Successfully deleted";
+    }
+
+    @Override
+    public ProductModel updateProduct(UpdatePriceRequest request) {
+        if(productDao.findProductByName(request.getProductName()) == null) {
+            log.info("No such a product");
+            throw new NoSuchElementException("Can't find the product");
+        }
+        ProductEntity product = productDao.findProductByName(request.getProductName());
+        product.setPrice(request.getPrice());
+
+        return ProductModel.fromEntity(productDao.updateProduct(product));
+
     }
 }
