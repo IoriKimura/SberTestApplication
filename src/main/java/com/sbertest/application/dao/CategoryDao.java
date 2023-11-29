@@ -32,4 +32,8 @@ public class CategoryDao {
     public List<CategoryModel> getAllCategories() {
         return categoryRepo.findAll().stream().map(CategoryModel::fromEntity).toList();
     }
+
+    public void deleteCategory(CategoryEntity category) {
+        categoryRepo.delete(category);
+    }
 }
