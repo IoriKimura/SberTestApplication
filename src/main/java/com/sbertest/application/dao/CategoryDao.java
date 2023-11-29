@@ -20,4 +20,11 @@ public class CategoryDao {
                 .categoryName(category.getCategoryName())
                 .build();
     }
+
+    public CategoryEntity findByCategoryName(String categoryName){
+        if(categoryRepo.findByCategoryName(categoryName).isPresent()){
+            return categoryRepo.findByCategoryName(categoryName).get();
+        }
+        return null;
+    }
 }
