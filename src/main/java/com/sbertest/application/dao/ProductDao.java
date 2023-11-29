@@ -20,6 +20,7 @@ public class ProductDao {
 
     public ProductModel createProduct(ProductEntity product){
         ProductEntity productEntity = productRepo.save(product);
+        log.info("Был добавлен новый продукт");
         return ProductModel.builder()
                 .productName(productEntity.getProductName())
                 .category(CategoryModel.fromEntity(productEntity.getCategory()))
@@ -36,14 +37,17 @@ public class ProductDao {
         if(productRepo.findByProductName(productName).isPresent()){
             return productRepo.findByProductName(productName).get();
         }
+        log.info("Продукт не найден");
         return null;
     }
 
     public void deleteProduct(ProductEntity product) {
+        log.info("Продукт удалён");
         productRepo.delete(product);
     }
 
     public ProductEntity updateProduct(ProductEntity product) {
+        log.info("Продукт был обновлён");
         return productRepo.save(product);
     }
 }

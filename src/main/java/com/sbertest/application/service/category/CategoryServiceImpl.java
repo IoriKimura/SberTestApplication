@@ -6,14 +6,12 @@ import com.sbertest.application.dto.requests.CreateCategoryRequest;
 import com.sbertest.application.dto.requests.DeleteCategoryRequest;
 import com.sbertest.application.entities.CategoryEntity;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryDao categoryDao;
@@ -34,11 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public String deleteCategory(DeleteCategoryRequest request) {
         if(categoryDao.findByCategoryName(request.getCategoryName()) == null){
-            log.info("No such a category");
-            return "Can't find the category";
+            return "Не получилось найти категорию";
         }
         categoryDao.deleteCategory(categoryDao.findByCategoryName(request.getCategoryName()));
-        return "Successfully deleted";
+        return "Категория успешно удалена";
     }
 
 
