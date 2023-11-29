@@ -29,7 +29,7 @@ public class ProductEntity {
     private CategoryEntity category;
 
     @Column(name = "product_price")
-    private String price;
+    private int price;
 
     @Column(name = "product_manufacturer")
     private String productManufacturer;

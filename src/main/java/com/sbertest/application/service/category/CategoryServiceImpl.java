@@ -1,4 +1,4 @@
-package com.sbertest.application.service;
+package com.sbertest.application.service.category;
 
 import com.sbertest.application.dao.CategoryDao;
 import com.sbertest.application.dto.models.CategoryModel;

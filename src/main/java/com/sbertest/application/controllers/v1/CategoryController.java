@@ -3,7 +3,7 @@ package com.sbertest.application.controllers.v1;
 import com.sbertest.application.dto.models.CategoryModel;
 import com.sbertest.application.dto.requests.CreateCategoryRequest;
 import com.sbertest.application.dto.responses.CreateCategoryResponse;
-import com.sbertest.application.service.CategoryService;
+import com.sbertest.application.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
