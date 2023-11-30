@@ -9,13 +9,12 @@ import com.sbertest.application.dto.requests.UpdatePriceRequest;
 import com.sbertest.application.entities.CategoryEntity;
 import com.sbertest.application.entities.ProductEntity;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Slf4j
+
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
@@ -28,8 +27,7 @@ public class ProductServiceImpl implements ProductService{
     public ProductModel createProduct(CreateProductRequest request) {
         CategoryEntity category = categoryDao.findByCategoryName(request.getCategoryName());
         if(category == null) {
-            log.info("No such a category");
-            throw new NoSuchElementException("Can't find the category");
+            throw new NoSuchElementException("Не получилось найти категорию");
         }
 
         ProductEntity product = ProductEntity.builder()
@@ -50,18 +48,16 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public String deleteProduct(DeleteProductRequest request) {
         if(productDao.findProductByName(request.getProductName()) == null){
-            log.info("No such a product");
-            return "Can't find the product";
+            return "Не получается найти продукт";
         }
         productDao.deleteProduct(productDao.findProductByName(request.getProductName()));
-        return "Successfully deleted";
+        return "Продукт успешно удалён";
     }
 
     @Override
     public ProductModel updateProduct(UpdatePriceRequest request) {
         if(productDao.findProductByName(request.getProductName()) == null) {
-            log.info("No such a product");
-            throw new NoSuchElementException("Can't find the product");
+            throw new NoSuchElementException("Не получилось найти продукт");
         }
         ProductEntity product = productDao.findProductByName(request.getProductName());
         product.setPrice(request.getPrice());
