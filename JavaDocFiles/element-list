@@ -1,0 +1,10 @@
+com.sbertest.application
+com.sbertest.application.controllers.v1
+com.sbertest.application.dao
+com.sbertest.application.dto.models
+com.sbertest.application.dto.requests
+com.sbertest.application.dto.responses
+com.sbertest.application.entities
+com.sbertest.application.repositories
+com.sbertest.application.service.category
+com.sbertest.application.service.product
