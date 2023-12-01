@@ -15,26 +15,26 @@
 Тесты функционала проводились ручным методом с помощью **Postman**
 
 ### Добавление категории
-![img.png](img.png)
+![img.png](readIMG/img.png)
 
 ### Список всех категорий
-![img_1.png](img_1.png)
+![img_1.png](readIMG/img_1.png)
 
 ### Удаление категории
-![img_2.png](img_2.png)
+![img_2.png](readIMG/img_2.png)
 В базе данных более нет такой категории
-![img_7.png](img_7.png)
+![img_7.png](readIMG/img_7.png)
 
 ### Добавление товара
-![img_3.png](img_3.png)
+![img_3.png](readIMG/img_3.png)
 
 ### Список всех товаров
-![img_4.png](img_4.png)
+![img_4.png](readIMG/img_4.png)
 
 ### Удаление товара
-![img_5.png](img_5.png)
+![img_5.png](readIMG/img_5.png)
 В базе данных более нет такого товара
-![img_8.png](img_8.png)
+![img_8.png](readIMG/img_8.png)
 
 ### Обновление цены товара
-![img_6.png](img_6.png)
+![img_6.png](readIMG/img_6.png)
