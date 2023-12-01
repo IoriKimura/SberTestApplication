@@ -13,7 +13,6 @@ import java.util.List;
 
 /**
  * Класс @RestController для категории товаров
- * @author Sergey Ivanov
 * */
 @RestController
 @RequiredArgsConstructor

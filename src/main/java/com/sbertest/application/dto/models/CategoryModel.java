@@ -7,7 +7,6 @@ import java.util.UUID;
 
 /**
  * DTO model для категорий
- * @author Sergey Ivanov
  */
 @Data
 @AllArgsConstructor

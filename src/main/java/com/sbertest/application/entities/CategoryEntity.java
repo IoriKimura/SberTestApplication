@@ -9,7 +9,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
-
+/**Класс, описывающий сущность Категория*/
 @Entity
 @Table(name = "category")
 @Getter
@@ -19,10 +19,12 @@ import java.util.UUID;
 @Builder
 public class CategoryEntity {
 
+    /**Поле идентификатор*/
     @Id
     @UuidGenerator
     private UUID id;
 
+    /**Поле имя категории*/
     @Column(name = "category_name")
     private String categoryName;
 

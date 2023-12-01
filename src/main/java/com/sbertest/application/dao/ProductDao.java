@@ -13,7 +13,6 @@ import java.util.NoSuchElementException;
 
 /**
  * DAO класс товаров
- * @author Sergey Ivanov
  */
 @Component
 @RequiredArgsConstructor

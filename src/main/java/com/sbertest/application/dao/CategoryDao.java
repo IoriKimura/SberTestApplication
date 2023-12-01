@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * DAO класс категорий
- * @author Sergey Ivanov
  */
 @Component
 @RequiredArgsConstructor
