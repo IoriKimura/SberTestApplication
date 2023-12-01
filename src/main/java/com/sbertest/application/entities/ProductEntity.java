@@ -8,6 +8,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
+/**Класс, описывающий сущность Товар*/
 @Entity
 @Table(name = "products")
 @Getter
@@ -17,20 +18,26 @@ import java.util.UUID;
 @Builder
 public class ProductEntity {
 
+    /**Поле идентификатор*/
     @Id
     @UuidGenerator
     private UUID id;
 
+    /**Поле имя продукта*/
     @Column(name = "product_name")
     private String productName;
 
+    /**Поле категория
+     * @see CategoryEntity*/
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private CategoryEntity category;
 
+    /**Поле цена*/
     @Column(name = "product_price")
     private int price;
 
+    /**Поле производитель*/
     @Column(name = "product_manufacturer")
     private String productManufacturer;
 }

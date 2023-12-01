@@ -14,17 +14,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
+/**
+ * Класс, имплементирующий {@link ProductService}
+ */
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
 
+    /**Поле {@link ProductDao}*/
     private final ProductDao productDao;
+
+    /**Поле {@link CategoryDao}*/
     private final CategoryDao categoryDao;
 
-
+    /**
+     * Метод для создания товара
+     * @param request запрос на создание товара
+     * @return модель товара {@link ProductModel}
+     * @see CreateProductRequest
+     */
     @Override
-    public ProductModel createProduct(CreateProductRequest request) {
+    public ProductModel createProduct(CreateProductRequest request){
         CategoryEntity category = categoryDao.findByCategoryName(request.getCategoryName());
         if(category == null) {
             throw new NoSuchElementException("Не получилось найти категорию");
@@ -40,11 +50,21 @@ public class ProductServiceImpl implements ProductService{
         return productDao.createProduct(product);
     }
 
+    /**
+     * Метод для получения списка всех товаров
+     * @return список всех товаров в виде {@link ProductModel}
+     */
     @Override
     public List<ProductModel> getProducts() {
         return productDao.getAllProducts();
     }
 
+    /**
+     * Метод для удаления товара
+     * @param request запрос на удаление товара
+     * @return строка с результатом удаления
+     * @see DeleteProductRequest
+     */
     @Override
     public String deleteProduct(DeleteProductRequest request) {
         if(productDao.findProductByName(request.getProductName()) == null){
@@ -54,6 +74,12 @@ public class ProductServiceImpl implements ProductService{
         return "Продукт успешно удалён";
     }
 
+    /**
+     * Метод для обновления цены товара
+     * @param request запрос на обновление цены товара
+     * @return модель товара из сущности {@link ProductModel}
+     * @see UpdatePriceRequest
+     */
     @Override
     public ProductModel updateProduct(UpdatePriceRequest request) {
         if(productDao.findProductByName(request.getProductName()) == null) {
